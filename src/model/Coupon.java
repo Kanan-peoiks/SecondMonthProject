@@ -9,6 +9,15 @@ public class Coupon {
     private String expiryDate; //son istifade tarixi
     private int usageLimit; //istifadeni limitleyir
 
+    public Coupon(String code, String type, double value, String applicableCategory, String expiryDate, int usageLimit) {
+        this.code = code;
+        this.type = type;
+        this.value = value;
+        this.applicableCategory = applicableCategory;
+        this.expiryDate = expiryDate;
+        this.usageLimit = usageLimit;
+    }
+
     public String getCode() {
         return code;
     }
@@ -55,5 +64,17 @@ public class Coupon {
 
     public void setUsageLimit(int usageLimit) {
         this.usageLimit = usageLimit;
+    }
+
+    @Override
+    public String toString() {
+        return "Coupon{" +
+                "code='" + code + '\'' +
+                ", type='" + type + '\'' +
+                ", value=" + value +
+                ", applicableCategory='" + applicableCategory + '\'' +
+                ", expiryDate='" + expiryDate + '\'' +
+                ", usageLimit=" + usageLimit +
+                '}';
     }
 }

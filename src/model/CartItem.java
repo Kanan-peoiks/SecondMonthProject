@@ -6,6 +6,13 @@ public class CartItem {
     private double unitPrice; //bir denesinin qiymeti
     private int quantity; //sebetdeki miqdar
 
+    public CartItem(String productId, String productName, double unitPrice, int quantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.unitPrice = unitPrice;
+        this.quantity = quantity;
+    }
+
     public String getProductId() {
         return productId;
     }
@@ -38,9 +45,19 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    void getTotal (){
-        double result = unitPrice *quantity;
-        System.out.println(result);
+    //GETTOTAL
+    public double getTotal (){
+        return unitPrice *quantity;
     }
 
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "productId='" + productId + '\'' +
+                ", productName='" + productName + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
