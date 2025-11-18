@@ -30,6 +30,7 @@ public class Main {
         scan.nextLine();
         switch (secim) {
             case 1:
+                System.out.println("- Mövcud məhsullar -");
                 for (int i = 0; i < product.length; i++) {
                     System.out.println("Məhsullar: " + product[i]);
                 }
@@ -54,6 +55,20 @@ public class Main {
                 System.out.println("Yanlış seçim!");
         }
     }
+        //Əlavələr: kupon əlavə etmək
+                    // 3 dənə eyni maldan alan 3% endirim
+
+        // endirim elave etmek
+                    // umumi mebleg 20 manatdan cox olanda 2% endirim
+                    // umumi mebleg 50 manatdan cox olanda 3% endirim
+                    // umumi mebleg 100 manatdan cox olanda 5% endirim
+                    // butun kateqoriya uzre alis etdikde 8% endirim
+
+
+        //kateqoriya (model) əlavə etmək:
+                    // telefon -> model və ya soyuducu -> bosh
+
+        // hər modelin uyğun id-si id->kateqoriya-> id->model
 
 
 
