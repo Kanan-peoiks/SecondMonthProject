@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class ShoppingCart {
 
     ArrayList<Product> items = new ArrayList<>();
+    String appliedCoupon = "";        // hansı kupon işlədilib (boşdursa heç biri)
+    double couponDiscount = 0.0;      // kupon faizi (məsələn 0.30 = 30%)
 
 
     public void addProduct(Product p){
@@ -40,4 +42,56 @@ public class ShoppingCart {
     }
     return total;
     }
+
+
+    public void applyCoupon (String code){
+        if (code.equals("NOYABR30")){
+            couponDiscount = 0.30;
+            appliedCoupon = code;
+            System.out.println("Kupon qəbul olundu! 30% endirim əlavə edildi.");
+        }
+        else{
+            System.out.println("Kupon yanlışdır.");
+        }
+    }
+
+    public double calculateDiscount (){
+        double total = getTotalPrice();
+        double discount= 0.0;
+        discount += couponDiscount;
+    if (total >= 100){
+        discount +=0.05;
+    } else if (total >=50) {
+        discount += 0.03;
+    } else if (total >= 20) {
+        discount +=0.02;
+    }
+        return discount;
+    }
+
+    public double getFinalPrice(){
+        double total = getTotalPrice();
+        double discountRate = calculateDiscount();
+                return total * ( 1 - discountRate);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

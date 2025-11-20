@@ -23,6 +23,7 @@ public class Main {
             System.out.println("3 - Səbətdən sil");
             System.out.println("4 - Səbəti göstər");
             System.out.println("5 - Ümumi məbləğ");
+            System.out.println("6 - Kupon daxil et");
             System.out.println("0 - Çıxış");
             System.out.print("Seçiminiz: ");
 
@@ -31,6 +32,9 @@ public class Main {
             switch (secim) {
                 case 1: //Məhsulları göstər
                     System.out.println("\n=== MÖVCUD MƏHSULLAR ===");
+                    System.out.println("100+,50+,20+ AZN alış-verişə görə əlavə 5,3,2% endirim!");
+                    System.out.println("NOYABR30 kuponu ilə isə +30% endirim!");
+                    System.out.println("─────────────────────────────────────────────");
                     for (Product p : product) {
                         System.out.println(p);
                     }
@@ -75,7 +79,22 @@ public class Main {
                     break;
 
                 case 5: //Ümumi məbləğ
-                    System.out.println("Ümumi məbləğ: " + cart.getTotalPrice() + " AZN");
+                    double original = cart.getTotalPrice();
+                    double finalPrice = cart.getFinalPrice();
+
+                    System.out.println("=== HESABLAMA ===");
+                    System.out.println("Səbət cəmi: " + original + " AZN");
+                    if (cart.couponDiscount > 0) {
+                        System.out.println("Kupon endirimi (30%): -" + (original * 0.30) + " AZN");
+                    }
+                    System.out.println("Ümumi endirim: " + String.format("%.0f%%", cart.calculateDiscount() * 100));
+                    System.out.println("Yekun ödəniləcək: " + String.format("%.2f", finalPrice) + " AZN");
+                    break;
+
+                case 6: //Kupon
+                    System.out.println("Kupon kodunu daxil edin: ");
+                    String kuponKodu = scan.next();
+                    cart.applyCoupon(kuponKodu);
                     break;
 
                 case 0: //Çıxış
@@ -86,27 +105,6 @@ public class Main {
                 default:
                     System.out.println("Belə bir seçim yoxdur! Yenidən cəhd edin.");
             }
-
-
-
-
-            //Əlavələr: kupon əlavə etmək
-            // 3 dənə eyni maldan alan 3% endirim
-
-            // endirim elave etmek
-            // umumi mebleg 20 manatdan cox olanda 2% endirim
-            // umumi mebleg 50 manatdan cox olanda 3% endirim
-            // umumi mebleg 100 manatdan cox olanda 5% endirim
-            // butun kateqoriya uzre alis etdikde 8% endirim
-
-
-            //kateqoriya (model) əlavə etmək:
-            // telefon -> model və ya soyuducu -> bosh
-
-            // hər modelin uyğun id-si id->kateqoriya-> id->model
-
-
-
         }
 
 
