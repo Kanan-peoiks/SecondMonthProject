@@ -8,39 +8,39 @@ public class ShoppingCart {
 
 
     public void addProduct(Product p){
-    items.add(p);
+        items.add(p);
         System.out.println(p.getName() + " səbətə əlavə edildi.");
     }
 
     public void removeProduct(int id){
-    for (Product p: items){
-        if (p.getId() == id ){
-            items.remove(p);
-            System.out.println(p.getName() + " səbətdən silindi.");
-            return;
+        for (Product p: items){
+            if (p.getId() == id ){
+                items.remove(p);
+                System.out.println(p.getName() + " səbətdən silindi.");
+                return;
+            }
         }
-    }
         System.out.println("Məhsul səbətdə tapılmadı.");
     }
 
     public void displayCart(){
-            if (items.isEmpty()){
-                System.out.println("Səbət boşdur.");
+        if (items.isEmpty()){
+            System.out.println("Səbət boşdur.");
+        }
+        else {
+            System.out.println("Səbətdəki məhsullar: ");
+            for (Product p : items) {
+                System.out.println(p);
             }
-            else {
-                System.out.println("Səbətdəki məhsullar: ");
-                for (Product p : items) {
-                    System.out.println(p);
-                }
-            }
+        }
     }
 
     public double getTotalPrice(){
-    double total = 0;
-    for (Product p : items){
-        total += total +p.getPrice();
-    }
-    return total;
+        double total = 0;
+        for (Product p : items){
+            total += p.getPrice();
+        }
+        return total;
     }
 
 
@@ -59,39 +59,20 @@ public class ShoppingCart {
         double total = getTotalPrice();
         double discount= 0.0;
         discount += couponDiscount;
-    if (total >= 100){
-        discount +=0.05;
-    } else if (total >=50) {
-        discount += 0.03;
-    } else if (total >= 20) {
-        discount +=0.02;
-    }
+        if (total >= 100){
+            discount +=0.05;
+        } else if (total >=50) {
+            discount += 0.03;
+        } else if (total >= 20) {
+            discount +=0.02;
+        }
         return discount;
     }
 
     public double getFinalPrice(){
         double total = getTotalPrice();
         double discountRate = calculateDiscount();
-                return total * ( 1 - discountRate);
+        return total * ( 1 - discountRate);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

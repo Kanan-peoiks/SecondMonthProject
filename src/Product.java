@@ -1,43 +1,39 @@
 public class Product {
 
-    int id;
-    String name;
-    double price;
+    private int id;                    // private etdim (encapsulation)
+    private String name;
+    private double price;
+    private Category category;         // YENİ: kateqoriya əlavə edildi
 
-    public Product(int id, String name, double price) {
+    // YENİ: kateqoriyalı constructor
+    public Product(int id, String name, double price, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
     }
 
+
+    // Getter-lər
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public Category getCategory() {     // YENİ: kateqoriyanı qaytarır
+        return category;
     }
+
 
     @Override
     public String toString() {
-        return "ID:" + id + "," + name  + "," + price;
+        return "ID:" + id + ", " + name + ", " + price + " AZN → [" + category.getName() + "]";
     }
-
-
 }
